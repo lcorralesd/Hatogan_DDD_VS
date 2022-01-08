@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{8DB61A57-17DA-447F-9CD7-138514A4D74E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E747FCF1-7CF7-4ACD-923C-0F2FA6266155}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{14536F9A-FCA2-4863-86F4-2B024B32C62D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hatogan.API", "Hatogan.API\Hatogan.API.csproj", "{FAF6B52B-6044-4828-B1C5-569260448A2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hatogan.Domain", "Hatogan.Domain\Hatogan.Domain.csproj", "{AB7FD088-A731-424F-84E8-51ED4A46DC79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatogan.Application", "Hatogan.Application\Hatogan.Application.csproj", "{6E544943-156E-4CBA-91C9-431178A910CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAF6B52B-6044-4828-B1C5-569260448A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF6B52B-6044-4828-B1C5-569260448A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF6B52B-6044-4828-B1C5-569260448A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF6B52B-6044-4828-B1C5-569260448A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7FD088-A731-424F-84E8-51ED4A46DC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7FD088-A731-424F-84E8-51ED4A46DC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7FD088-A731-424F-84E8-51ED4A46DC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7FD088-A731-424F-84E8-51ED4A46DC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E544943-156E-4CBA-91C9-431178A910CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E544943-156E-4CBA-91C9-431178A910CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E544943-156E-4CBA-91C9-431178A910CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E544943-156E-4CBA-91C9-431178A910CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FAF6B52B-6044-4828-B1C5-569260448A2D} = {14536F9A-FCA2-4863-86F4-2B024B32C62D}
+		{AB7FD088-A731-424F-84E8-51ED4A46DC79} = {E747FCF1-7CF7-4ACD-923C-0F2FA6266155}
+		{6E544943-156E-4CBA-91C9-431178A910CC} = {8DB61A57-17DA-447F-9CD7-138514A4D74E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {521D6EF3-6ED0-4795-8D4A-BFA1492C848F}
+	EndGlobalSection
+EndGlobal
