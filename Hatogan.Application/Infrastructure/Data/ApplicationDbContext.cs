@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Hatogan.Application.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext, IInventoryContext
+    public class ApplicationDbContext : DbContext //, IInventoryContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -20,6 +21,12 @@ namespace Hatogan.Application.Infrastructure.Data
         public DbSet<Sex> Sexs { get; set; } = default!;
         public DbSet<Origin> Origins { get; set; } = default!;
         public DbSet<Status> Statuses { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {

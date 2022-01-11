@@ -14,25 +14,29 @@ namespace Hatogan.Domain.Entities
         public string? Name { get; private set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; } = default!;
-        public int OriginId { get; private set; }
+        public short OriginId { get; private set; }
         public Origin Origin { get; private set; } = default!;
-        public int SexId { get; private set; }
+        public short SexId { get; private set; }
         public Sex Sex { get; private set; } = default!;
-        public int StatusId { get; private set; } = 1;
+        public short StatusId { get; private set; } = 1;
         public Status Status { get; private set; } = default!;
         public string? Color { get; private set; }
-        public string? Raza { get; private set; }
+        public string? Breed { get; private set; }
         public DateTime BirthDate { get; private set; }
         public decimal BirthWeight { get; private set; } = 0;
         public DateTime AdmissionDate { get; private set; }
         public decimal IncomeWeight { get; private set; } = 0;
         public decimal ActualWeight { get; private set; } = 0;
-        public int? SireId { get; private set; }
+        public Guid? SireId { get; private set; }
         public Animal? Sire { get; private set; }
-        public int? DamId { get; private set; }
+        public Guid? DamId { get; private set; }
         public Animal? Dam { get; private set; }
         public string? Remarks { get; private set; }
-        public string CreatedBy { get ; set ; }
+
+        public List<Animal> DamPups { get; set; } = new List<Animal>();
+        public List<Animal> SirePups { get; set; } = new List<Animal>();
+
+        public string CreatedBy { get; set; } = default!;
         public DateTimeOffset CreatedDate { get; set; }
         public string? UpdatedBy { get; set; }
         public DateTimeOffset? UpdatedDate { get; set; }
@@ -42,14 +46,14 @@ namespace Hatogan.Domain.Entities
             this.CategoryId = ageDays switch
             {
                 int value when value is > 0 and <= 240 => 1,
-                int value when value is > 240 and <= 365 && this.Sex.Id == 1  => (int)Categories.NovillasDestete,
-                int value when value is > 365 and <= 600 && this.Sex.Id == 1 => (int)Categories.NovillasDeLevante,
-                int value when value is > 600 and <= 1080 && this.Sex.Id == 1 => (int)Categories.NovillaDeVientre,
-                int value when value is > 240 and <= 365 && this.Sex.Id == 2 => (int)Categories.MautesDestete,
-                int value when value is > 365 and <= 600 && this.Sex.Id == 2 => (int)Categories.MauteDeLevante,
-                int value when value is > 600 and <= 1080 && this.Sex.Id == 2 => (int)Categories.MauteDeCeba,
-                int value when value is > 1080 && this.Sex.Id == 1 => (int)Categories.Vacas,
-                int value when value is > 1080 && this.Sex.Id == 2 => (int)Categories.Toros,
+                int value when value is > 240 and <= 365 && this.SexId == 1  => (int)Categories.NovillasDestete,
+                int value when value is > 365 and <= 600 && this.SexId == 1 => (int)Categories.NovillasDeLevante,
+                int value when value is > 600 and <= 1080 && this.SexId == 1 => (int)Categories.NovillaDeVientre,
+                int value when value is > 240 and <= 365 && this.SexId == 2 => (int)Categories.MautesDestete,
+                int value when value is > 365 and <= 600 && this.SexId == 2 => (int)Categories.MauteDeLevante,
+                int value when value is > 600 and <= 1080 && this.SexId == 2 => (int)Categories.MauteDeCeba,
+                int value when value is > 1080 && this.SexId == 1 => (int)Categories.Vacas,
+                int value when value is > 1080 && this.SexId == 2 => (int)Categories.Toros,
                 _ => (int)Categories.Vacas,
             };
         }
@@ -73,7 +77,38 @@ namespace Hatogan.Domain.Entities
                 return ageDays;
         }
 
-        public Animal(string number, string? name, int originId, int sexId, int statusId, string? color, string? raza, DateTime birthDate, decimal birthWeight, DateTime admissionDate, decimal incomeWeight, decimal actualWeight, int? sireId, int? damId, string? remarks)
+        public void AddDamPups(Animal damPup)
+        {
+            var exist = this.DamPups.Any(a => a.Number == damPup.Number);
+            if(exist)
+            {
+                throw new Exception("Ya existe una cria con ese Numero para este animal");
+            }
+
+            if(damPup.Number == this.Number)
+            {
+                throw new Exception("Error no puede asignar a la cria el mismo numero de la mama");
+            }
+
+            this.DamPups.Add(damPup);
+        }
+
+        public void AddSirePups(Animal sirePup)
+        {
+            var exist = this.SirePups.Any(a => a.Number == sirePup.Number);
+            if (exist)
+            {
+                throw new Exception("Ya existe una cria con ese Numero para este animal");
+            }
+
+            if (sirePup.Number == this.Number)
+            {
+                throw new Exception("Error no puede asignar a la cria el mismo numero del papá");
+            }
+            this.SirePups.Add(sirePup);
+        }
+
+        public Animal(string number, string? name, short originId, short sexId, short statusId, string? color, string? breed, DateTime birthDate, decimal birthWeight, DateTime admissionDate, decimal incomeWeight, decimal actualWeight, Guid? sireId, Guid? damId, string? remarks)
         {
             Id = new Guid();
             Number = number;
@@ -83,7 +118,7 @@ namespace Hatogan.Domain.Entities
             SexId = sexId;
             StatusId = statusId;
             Color = color;
-            Raza = raza;
+            Breed = breed;
             BirthDate = birthDate;
             BirthWeight = birthWeight;
             AdmissionDate = admissionDate;

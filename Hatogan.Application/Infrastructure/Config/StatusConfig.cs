@@ -24,11 +24,11 @@ namespace Hatogan.Application.Infrastructure.Config
             },
             new Sex("Muerto")
             {
-                Id = 2,
+                Id = 3,
             },
             new Sex("Enfermo")
             {
-                Id = 2,
+                Id = 4,
             });
         }
     }
