@@ -1,5 +1,6 @@
 ﻿using Carter;
 using Hatogan.Application.UseCases.Animals.Create;
+using Hatogan.Application.UseCases.Animals.GetAll;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,8 @@ namespace Hatogan.Application.UseCases.Animals
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            //app.MapGet("api/animals",)
+            app.MapGet("api/animals", (IMediator mediator) =>
+                mediator.Send(new GetAllAnimalsQuery()));
 
             app.MapPost("api/animals", (IMediator mediator, CreateAnimalCommand command) =>
             {

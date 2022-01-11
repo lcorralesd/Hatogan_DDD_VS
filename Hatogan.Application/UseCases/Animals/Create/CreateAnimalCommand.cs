@@ -41,15 +41,15 @@ namespace Hatogan.Application.UseCases.Animals.Create
 
                     _context.Animals.Add(newAnimal);
 
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync(cancellationToken);
 
                     var dto = new CreateAnimalDTO
                     {
                         Id = newAnimal.Id,
                         Number = newAnimal.Number,
                         Name = newAnimal.Name,
-                        SexName = newAnimal.Sex.Name,
-                        CategoryName = newAnimal.Category.Name,
+                        //SexName = newAnimal.Sex.Name,
+                        //CategoryName = newAnimal.Category.Name,
                         Age = newAnimal.CalculateAgeDays(newAnimal.BirthDate)
                     };
                     return Results.Ok(dto);
@@ -67,8 +67,8 @@ namespace Hatogan.Application.UseCases.Animals.Create
         public Guid Id { get; set; }
         public string Number { get; set; } = default!;
         public string? Name { get; set; }
-        public string SexName { get; set; } = default!;
-        public string CategoryName { get; set; } = default!;
+        //public string SexName { get; set; } = default!;
+        //public string CategoryName { get; set; } = default!;
         public int Age { get; set; }
     }
 }

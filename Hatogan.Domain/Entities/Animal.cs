@@ -10,28 +10,28 @@ namespace Hatogan.Domain.Entities
 {
     public class Animal : BaseEntity<Guid>, IAuditEntity, IAggregateRoot
     {
-        public string Number { get; private set; } = default!;
-        public string? Name { get; private set; }
+        public string Number { get; init; } = default!;
+        public string? Name { get; init; }
         public int CategoryId { get; set; }
         public Category Category { get; set; } = default!;
-        public short OriginId { get; private set; }
-        public Origin Origin { get; private set; } = default!;
-        public short SexId { get; private set; }
-        public Sex Sex { get; private set; } = default!;
-        public short StatusId { get; private set; } = 1;
-        public Status Status { get; private set; } = default!;
-        public string? Color { get; private set; }
-        public string? Breed { get; private set; }
-        public DateTime BirthDate { get; private set; }
-        public decimal BirthWeight { get; private set; } = 0;
-        public DateTime AdmissionDate { get; private set; }
-        public decimal IncomeWeight { get; private set; } = 0;
-        public decimal ActualWeight { get; private set; } = 0;
-        public Guid? SireId { get; private set; }
-        public Animal? Sire { get; private set; }
-        public Guid? DamId { get; private set; }
-        public Animal? Dam { get; private set; }
-        public string? Remarks { get; private set; }
+        public short OriginId { get; init; }
+        public Origin Origin { get; init; } = default!;
+        public short SexId { get; init; }
+        public Sex Sex { get; init; } = default!;
+        public short StatusId { get; init; } = 1;
+        public Status Status { get; init; } = default!;
+        public string? Color { get; init; }
+        public string? Breed { get; init; }
+        public DateTime BirthDate { get; init; }
+        public decimal BirthWeight { get; init; } = 0;
+        public DateTime AdmissionDate { get; init; }
+        public decimal IncomeWeight { get; init; } = 0;
+        public decimal ActualWeight { get; init; } = 0;
+        public Guid? SireId { get; init; }
+        public Animal? Sire { get; init; }
+        public Guid? DamId { get; init; }
+        public Animal? Dam { get; init; }
+        public string? Remarks { get; init; }
 
         public List<Animal> DamPups { get; set; } = new List<Animal>();
         public List<Animal> SirePups { get; set; } = new List<Animal>();

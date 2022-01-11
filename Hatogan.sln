@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hatogan.API", "Hatogan.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hatogan.Domain", "Hatogan.Domain\Hatogan.Domain.csproj", "{AB7FD088-A731-424F-84E8-51ED4A46DC79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatogan.Application", "Hatogan.Application\Hatogan.Application.csproj", "{6E544943-156E-4CBA-91C9-431178A910CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hatogan.Application", "Hatogan.Application\Hatogan.Application.csproj", "{6E544943-156E-4CBA-91C9-431178A910CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hatogan.WebAPI", "Hatogan.WebAPI\Hatogan.WebAPI.csproj", "{05D52379-F5AC-4363-9E69-8560739F3392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6E544943-156E-4CBA-91C9-431178A910CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E544943-156E-4CBA-91C9-431178A910CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E544943-156E-4CBA-91C9-431178A910CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D52379-F5AC-4363-9E69-8560739F3392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D52379-F5AC-4363-9E69-8560739F3392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D52379-F5AC-4363-9E69-8560739F3392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D52379-F5AC-4363-9E69-8560739F3392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{FAF6B52B-6044-4828-B1C5-569260448A2D} = {14536F9A-FCA2-4863-86F4-2B024B32C62D}
 		{AB7FD088-A731-424F-84E8-51ED4A46DC79} = {E747FCF1-7CF7-4ACD-923C-0F2FA6266155}
 		{6E544943-156E-4CBA-91C9-431178A910CC} = {8DB61A57-17DA-447F-9CD7-138514A4D74E}
+		{05D52379-F5AC-4363-9E69-8560739F3392} = {14536F9A-FCA2-4863-86F4-2B024B32C62D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {521D6EF3-6ED0-4795-8D4A-BFA1492C848F}
