@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Hatogan.Domain\Hatogan.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>

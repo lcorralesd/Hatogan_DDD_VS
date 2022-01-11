@@ -19,7 +19,7 @@ namespace Hatogan.Application
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddCarter();
+            //services.AddCarter();
 
             return services;
         }

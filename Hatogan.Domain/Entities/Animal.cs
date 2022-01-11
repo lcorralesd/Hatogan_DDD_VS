@@ -41,11 +41,15 @@ namespace Hatogan.Domain.Entities
         public string? UpdatedBy { get; set; }
         public DateTimeOffset? UpdatedDate { get; set; }
 
-        public void CalculateCategory(int ageDays)
+        private int _ageDays; 
+
+        public void CalculateCategory(int _ageDays)
         {
-            this.CategoryId = ageDays switch
+            var ageMonth = (int)Math.Round(_ageDays / 30m, 0);
+
+            this.CategoryId = ageMonth switch
             {
-                int value when value is > 0 and <= 240 => 1,
+                int value when value is > 0 and <= 240 => (int)Categories.Terneros,
                 int value when value is > 240 and <= 365 && this.SexId == 1  => (int)Categories.NovillasDestete,
                 int value when value is > 365 and <= 600 && this.SexId == 1 => (int)Categories.NovillasDeLevante,
                 int value when value is > 600 and <= 1080 && this.SexId == 1 => (int)Categories.NovillaDeVientre,
@@ -73,8 +77,8 @@ namespace Hatogan.Domain.Entities
                 }
 
                 TimeSpan timeSpan = DateTime.Now.Subtract(birthDate.Date);
-                var ageDays = timeSpan.Days - leapYear;
-                return ageDays;
+                _ageDays = timeSpan.Days - leapYear;
+                return _ageDays;
         }
 
         public void AddDamPups(Animal damPup)
@@ -113,7 +117,6 @@ namespace Hatogan.Domain.Entities
             Id = new Guid();
             Number = number;
             Name = name;
-            this.CalculateCategory(CalculateAgeDays(this.BirthDate));
             OriginId = originId;
             SexId = sexId;
             StatusId = statusId;

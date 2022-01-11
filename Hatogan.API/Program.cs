@@ -1,5 +1,6 @@
 using Carter;
 using Hatogan.Application;
+using Hatogan.Application.UseCases.Animals;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.MapCarter();
+app.UseAnimalEndPoint();
+//app.MapCarter();
 
 app.Run();
 
