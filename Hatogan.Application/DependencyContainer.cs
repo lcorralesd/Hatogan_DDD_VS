@@ -1,4 +1,6 @@
 ﻿using Carter;
+using FluentValidation;
+using Hatogan.Application.Common.Behaviors;
 using Hatogan.Application.Infrastructure.Data;
 using Hatogan.Application.Interfaces;
 using MediatR;
@@ -18,6 +20,8 @@ namespace Hatogan.Application
             //services.AddScoped(typeof(IInventoryContext), provider => provider.GetService<ApplicationDbContext>()!);
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             //services.AddCarter();
 

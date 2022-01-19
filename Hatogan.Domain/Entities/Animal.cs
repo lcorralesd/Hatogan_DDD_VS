@@ -12,9 +12,9 @@ namespace Hatogan.Domain.Entities
     {
         public string Number { get; init; } = default!;
         public string? Name { get; init; }
-        public int CategoryId { get; set; }
+        public int CategoryId { get; private set; }
         public Category Category { get; set; } = default!;
-        public short OriginId { get; init; }
+        public short OriginId { get; private set; }
         public Origin Origin { get; init; } = default!;
         public short SexId { get; init; }
         public Sex Sex { get; init; } = default!;

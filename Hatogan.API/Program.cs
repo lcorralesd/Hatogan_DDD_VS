@@ -1,4 +1,5 @@
 using Carter;
+using Hatogan.API.Middlewares;
 using Hatogan.Application;
 using Hatogan.Application.UseCases.Animals;
 
@@ -23,6 +24,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAnimalEndPoint();
 //app.MapCarter();
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.Run();
 
